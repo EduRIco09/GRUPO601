@@ -4,6 +4,7 @@
 	import flash.utils.Timer;
 	import flash.events.TimerEvent;
 	
+	
 	public class ANTAGONISTA extends MovieClip {
 		
 		
@@ -13,12 +14,15 @@
 		private var limite_izq: int=32;
 		private var cambia: Timer = new Timer(200, 0);
 		private var tipo: Number;
+		private var lanzar: Timer = new Timer (2000,0);
 
 		public function ANTAGONISTA () {
 			// constructor code
 			addEventListener (Event.ENTER_FRAME, actualiza);
 			cambia.addEventListener (TimerEvent.TIMER, cambia_dir);
 			cambia.start();
+			lanzar.addEventListener(TimerEvent.TIMER, lanza_bala);
+			lanzar.start();
 		}
 		
 		public function actualiza(e: Event){
@@ -30,6 +34,14 @@
 				dir=1;
 			}
 			
+			
+		}
+		
+		public function lanza_bala(e: TimerEvent){
+			
+			//trace ("lanza bala");
+			var bala_nueva=new BALA(x,y)
+			stage.addChild(bala_nueva);
 			
 		}
 		
@@ -45,10 +57,13 @@
 				dir=-1;
 				break;
 			}
+			
+			
 		
 		
 		}
-
+		
+		
 	}
 	
 }
