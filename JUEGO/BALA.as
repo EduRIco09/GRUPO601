@@ -18,14 +18,25 @@
 			// constructor code
 		}
 		
-		public function mover(e:Event){s
+		public function mover(e:Event){
 		y+=vel;
 		if(y>=350){
 			vel=0;
 			stage.removeChild(this);
 			this.removeEventListener (Event.ENTER_FRAME, mover);
 		}
+		
+		if (this.hitTestObject(setup.PROTAGONISTA_new)){
+			vel=0;
+			stage.removeChild(this);
+			this.removeEventListener (Event.ENTER_FRAME, mover);
+			
+			setup.puntos+=1;
+			trace(setup.puntos);
+			}
 		}
+		
+		
 
 	}
 	
